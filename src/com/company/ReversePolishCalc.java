@@ -31,34 +31,16 @@ public class ReversePolishCalc {
             }
             else if (tokens[i].equals("*")){
                 push(pop() * Double.parseDouble(stack[topOfStack-1]));
-                if (topOfStack >= 3){
-                    stack[topOfStack-2] = stack[topOfStack-3];
-                    stack[topOfStack-3] = "0";
-                }
             }
             else if (tokens[i].equals("/")){
                 push(pop() / Double.parseDouble(stack[topOfStack-1]));
-                if (topOfStack >= 3){
-                    stack[topOfStack-2] = stack[topOfStack-3];
-                    stack[topOfStack-3] = "0";
-                }
             }
             else if (tokens[i].equals("+")){
                 push(pop() + Double.parseDouble(stack[topOfStack-1]));
-                if (topOfStack >= 3){
-                    stack[topOfStack-2] = stack[topOfStack-3];
-                    stack[topOfStack-3] = "0";
-                }
             }
             else if (tokens[i].equals("-")){
                 push((-1)*(pop()) + Double.parseDouble(stack[topOfStack-1]));
-                if (topOfStack >= 3){
-                    stack[topOfStack-2] = stack[topOfStack-3];
-                    stack[topOfStack-3] = "0";
-                }
             }
-
-
         }
 
         // 4. return the result
@@ -75,7 +57,10 @@ public class ReversePolishCalc {
         // change the double to a string and then push it on the stack
         stack[topOfStack] = Double.toString(d);
         topOfStack += 1;
-
+        for (int j = topOfStack-2; j < topOfStack-1; j++){
+            stack[j] = stack[j+1];
+        }
+        topOfStack -= 1;
     }
 
     private double pop() {

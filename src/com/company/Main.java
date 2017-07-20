@@ -22,6 +22,14 @@ public class Main {
          expectedResult = 2;
          actualResult = rpc.calculate(rpnExpression);
         checkResult(rpnExpression, expectedResult, actualResult);
+
+        int[] testArray = {6, 4, 3, 8, 7, 0, 100, 2};
+        BubbleSort bc = new BubbleSort();
+
+        for (int num : bc.bubSorting(testArray)){
+            System.out.println(num);
+        }
+
     }
 
     private static void checkResult(String expression, double expected, double actual) {

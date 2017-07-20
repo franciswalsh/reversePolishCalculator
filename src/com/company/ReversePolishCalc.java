@@ -33,7 +33,7 @@ public class ReversePolishCalc {
                 push(pop() * Double.parseDouble(stack[topOfStack-1]));
             }
             else if (tokens[i].equals("/")){
-                push(pop() / Double.parseDouble(stack[topOfStack-1]));
+                push((1/pop()) * Double.parseDouble(stack[topOfStack-1]));
             }
             else if (tokens[i].equals("+")){
                 push(pop() + Double.parseDouble(stack[topOfStack-1]));
